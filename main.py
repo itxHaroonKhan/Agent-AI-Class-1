@@ -24,17 +24,17 @@ quiz =[
   {
     "question": "What does a try-catch block do in JavaScript?",
     "options": [
-      "Catches and handles errors",
-      "Loops through code",
+      "Handles exceptions gracefully",
+      "Repeats code execution",
       "Defines a function",
       "Creates an array"
     ],
-    "answer": "Catches and handles errors",
+    "answer": "Handles exceptions gracefully",
     "difficulty": "Medium",
-    "explanation": "A try-catch block executes code in the try block and catches any errors in the catch block for handling."
+    "explanation": "A try-catch block catches errors in the try block, allowing the program to continue running."
   },
   {
-    "question": "What is logged in: try { let x = y; } catch (e) { console.log(e.name); }?",
+    "question": "What is logged in: try { undefinedVar; } catch (e) { console.log(e.name); }?",
     "options": [
       "ReferenceError",
       "TypeError",
@@ -43,130 +43,190 @@ quiz =[
     ],
     "answer": "ReferenceError",
     "difficulty": "Medium",
-    "explanation": "Accessing an undefined variable 'y' throws a ReferenceError, which is caught and logged."
+    "explanation": "Accessing an undefined variable throws a ReferenceError, caught and logged by the catch block."
   },
   {
-    "question": "What happens if no error occurs in a try block?",
+    "question": "What happens if an error occurs outside a try-catch block?",
     "options": [
-      "The catch block is skipped",
-      "The catch block executes",
-      "The code throws an error",
-      "The try block loops"
+      "The program stops with an uncaught error",
+      "The error is automatically caught",
+      "The program continues running",
+      "The error is logged to the console"
     ],
-    "answer": "The catch block is skipped",
+    "answer": "The program stops with an uncaught error",
     "difficulty": "Medium",
-    "explanation": "If no error occurs in the try block, the catch block is not executed."
+    "explanation": "Uncaught errors outside a try-catch block halt program execution."
   },
   {
-    "question": "What does 'throw new Error('Invalid')' do in a try-catch block?",
+    "question": "What does 'throw new Error('Invalid')' do in a try block?",
     "options": [
-      "Throws a custom error",
-      "Logs a message",
-      "Skips the catch block",
-      "Returns a value"
+      "Triggers the catch block with a custom error",
+      "Logs 'Invalid' to the console",
+      "Exits the function",
+      "Returns 'Invalid'"
     ],
-    "answer": "Throws a custom error",
+    "answer": "Triggers the catch block with a custom error",
     "difficulty": "Medium",
-    "explanation": "'throw new Error()' creates a custom error that can be caught by the catch block."
+    "explanation": "'throw new Error()' creates a custom error, caught by the catch block."
   },
   {
     "question": "What is the output of: try { throw 'Test'; } catch (e) { console.log(typeof e); }?",
     "options": [
       "string",
       "object",
-      "undefined",
-      "error"
+      "error",
+      "undefined"
     ],
     "answer": "string",
     "difficulty": "Medium",
-    "explanation": "Throwing a string 'Test' results in the catch block receiving it as a string type."
+    "explanation": "Throwing a string value results in 'string' being logged as the type of the caught error."
+  },
+  {
+    "question": "What does the 'finally' block do in try-catch?",
+    "options": [
+      "Executes regardless of an error",
+      "Catches errors",
+      "Repeats the try block",
+      "Skips the catch block"
+    ],
+    "answer": "Executes regardless of an error",
+    "difficulty": "Medium",
+    "explanation": "The 'finally' block runs after try and catch, whether an error occurs or not."
+  },
+  {
+    "question": "What is logged in: try { let x = 1 / 0; } catch (e) { console.log(e.message); }?",
+    "options": [
+      "Infinity",
+      "Division by zero",
+      "undefined",
+      "No error is thrown"
+    ],
+    "answer": "No error is thrown",
+    "difficulty": "Medium",
+    "explanation": "Dividing by zero in JavaScript results in Infinity, not an error, so the catch block is skipped."
   },
   {
     "question": "How do you handle multiple error types in a catch block?",
     "options": [
-      "Check e instanceof ErrorType",
+      "Use if-else to check e.name",
       "Use multiple catch blocks",
-      "Use try-catch-else",
-      "Use throw multiple times"
+      "Use a switch statement",
+      "Use a loop"
     ],
-    "answer": "Check e instanceof ErrorType",
+    "answer": "Use if-else to check e.name",
     "difficulty": "Medium",
-    "explanation": "Use 'instanceof' to check the error type within a single catch block."
+    "explanation": "A single catch block can use if-else to handle different error types based on e.name."
   },
   {
-    "question": "What does a finally block do in try-catch?",
+    "question": "What does try { JSON.parse('invalid'); } catch (e) { console.log(e.name); } log?",
     "options": [
-      "Executes regardless of error",
-      "Catches errors",
-      "Throws an error",
-      "Skips the catch block"
+      "SyntaxError",
+      "ReferenceError",
+      "TypeError",
+      "ParseError"
     ],
-    "answer": "Executes regardless of error",
+    "answer": "SyntaxError",
     "difficulty": "Medium",
-    "explanation": "The finally block runs after try and catch, whether an error occurs or not."
+    "explanation": "Invalid JSON in 'JSON.parse()' throws a SyntaxError, logged by the catch block."
+  },
+  {
+    "question": "What is the purpose of a throw statement?",
+    "options": [
+      "To create and raise a custom error",
+      "To exit a loop",
+      "To return a value",
+      "To log a message"
+    ],
+    "answer": "To create and raise a custom error",
+    "difficulty": "Medium",
+    "explanation": "'throw' creates an error that can be caught by a catch block."
   },
   {
     "question": "What is a closure in JavaScript?",
     "options": [
-      "A function with access to its outer scope",
-      "A loop that closes a block",
-      "An object with methods",
-      "A variable declaration"
+      "A function with access to its outer scope’s variables",
+      "A loop that runs indefinitely",
+      "A function with no parameters",
+      "A variable declared globally"
     ],
-    "answer": "A function with access to its outer scope",
+    "answer": "A function with access to its outer scope’s variables",
     "difficulty": "Medium",
-    "explanation": "A closure is a function that retains access to its outer scope’s variables even after the outer function finishes."
+    "explanation": "A closure is a function that retains access to its lexical scope’s variables even after the outer function finishes."
   },
   {
-    "question": "What is logged in: function outer() { let x = 1; return function inner() { return x; }; } let fn = outer(); console.log(fn());?",
+    "question": "What does this closure do: function outer() { let x = 1; return function() { return x++; }; } let fn = outer(); console.log(fn());?",
     "options": [
-      "1",
-      "undefined",
-      "null",
-      "Error"
+      "Logs 1",
+      "Logs 2",
+      "Logs undefined",
+      "Throws an error"
     ],
-    "answer": "1",
+    "answer": "Logs 1",
     "difficulty": "Medium",
-    "explanation": "The inner function retains access to x via closure, returning 1 when called."
+    "explanation": "The inner function retains access to x, logging 1 and incrementing x to 2 for the next call."
+  },
+  {
+    "question": "What is the output of: let fn = (function() { let count = 0; return function() { return count++; }; })(); console.log(fn(), fn());?",
+    "options": [
+      "0 1",
+      "1 2",
+      "0 0",
+      "1 1"
+    ],
+    "answer": "0 1",
+    "difficulty": "Medium",
+    "explanation": "The closure increments count each call, logging 0 on the first call and 1 on the second."
   },
   {
     "question": "How does a closure maintain variable state?",
     "options": [
-      "By referencing outer scope variables",
-      "By creating a global variable",
-      "By using an array",
-      "By resetting the variable"
+      "By retaining the outer function’s scope",
+      "By using global variables",
+      "By resetting variables each call",
+      "By copying variables"
     ],
-    "answer": "By referencing outer scope variables",
+    "answer": "By retaining the outer function’s scope",
     "difficulty": "Medium",
-    "explanation": "Closures maintain state by keeping outer scope variables in memory."
+    "explanation": "Closures preserve the outer function’s variables in memory, allowing state persistence."
   },
   {
-    "question": "What is the output of: function counter() { let count = 0; return () => count++; } let c = counter(); console.log(c()); c(); console.log(c());?",
+    "question": "What is logged by: function makeCounter() { let n = 0; return () => n++; } let counter = makeCounter(); console.log(counter());?",
     "options": [
-      "0, 2",
-      "0, 1",
-      "1, 2",
-      "undefined, undefined"
+      "0",
+      "1",
+      "undefined",
+      "Error"
     ],
-    "answer": "0, 2",
+    "answer": "0",
     "difficulty": "Medium",
-    "explanation": "The closure increments count, logging 0 on the first call and 2 on the third call after incrementing twice."
+    "explanation": "The closure returns n (0) and increments it to 1 for the next call."
   },
   {
-    "question": "What is a practical use of closures?",
+    "question": "What is a common use of closures?",
     "options": [
       "Creating private variables",
-      "Looping through arrays",
-      "Defining global functions",
-      "Handling errors"
+      "Repeating loops",
+      "Defining arrays",
+      "Handling events"
     ],
     "answer": "Creating private variables",
     "difficulty": "Medium",
-    "explanation": "Closures allow data encapsulation by keeping variables private within a function’s scope."
+    "explanation": "Closures are often used to encapsulate variables, making them private to the inner function."
   },
   {
-    "question": "What is the output of: let x = 10; function outer() { let x = 20; return () => x; } let fn = outer(); console.log(fn());?",
+    "question": "What does this closure return: function outer(x) { return function(y) { return x + y; }; } let add5 = outer(5); console.log(add5(3));?",
+    "options": [
+      "8",
+      "5",
+      "3",
+      "15"
+    ],
+    "answer": "8",
+    "difficulty": "Medium",
+    "explanation": "The inner function adds x (5) and y (3), returning 8."
+  },
+  {
+    "question": "What is the output of: let x = 10; function closure() { let x = 20; return function() { return x; }; } console.log(closure()());?",
     "options": [
       "20",
       "10",
@@ -175,118 +235,46 @@ quiz =[
     ],
     "answer": "20",
     "difficulty": "Medium",
-    "explanation": "The inner function’s closure captures the local x (20), not the global x (10)."
+    "explanation": "The inner function accesses the local x (20) from the closure, not the global x (10)."
   },
   {
-    "question": "How do closures help in event handlers?",
+    "question": "Why are closures useful in event handlers?",
     "options": [
-      "By preserving loop variables",
-      "By creating arrays",
-      "By throwing errors",
-      "By resetting variables"
+      "They retain access to outer variables",
+      "They prevent events from firing",
+      "They reset variables",
+      "They simplify DOM access"
     ],
-    "answer": "By preserving loop variables",
+    "answer": "They retain access to outer variables",
     "difficulty": "Medium",
-    "explanation": "Closures ensure variables in loops (e.g., index) are correctly captured in event handlers."
+    "explanation": "Closures allow event handlers to access variables from their outer scope."
+  },
+  {
+    "question": "What does this closure do: let fn = (function() { let id = 0; return () => id += 2; })(); console.log(fn());?",
+    "options": [
+      "Logs 2",
+      "Logs 0",
+      "Logs 1",
+      "Throws an error"
+    ],
+    "answer": "Logs 2",
+    "difficulty": "Medium",
+    "explanation": "The closure increments id by 2, returning 2 on the first call."
   },
   {
     "question": "What is a callback function in JavaScript?",
     "options": [
-      "A function passed as an argument",
+      "A function passed as an argument to another function",
+      "A function that returns a value",
       "A function that loops",
-      "A function that throws errors",
-      "A function that creates objects"
+      "A function that creates an object"
     ],
-    "answer": "A function passed as an argument",
+    "answer": "A function passed as an argument to another function",
     "difficulty": "Medium",
-    "explanation": "A callback is a function passed to another function to be executed later."
+    "explanation": "Callbacks are functions passed to another function to be executed later."
   },
   {
-    "question": "What is the output of: function run(cb) { cb(5); } run(x => console.log(x));?",
-    "options": [
-      "5",
-      "undefined",
-      "null",
-      "Error"
-    ],
-    "answer": "5",
-    "difficulty": "Medium",
-    "explanation": "The callback function logs the argument 5 passed to it by the run function."
-  },
-  {
-    "question": "What is a common use of callbacks?",
-    "options": [
-      "Handling asynchronous operations",
-      "Creating closures",
-      "Defining constructors",
-      "Looping arrays"
-    ],
-    "answer": "Handling asynchronous operations",
-    "difficulty": "Medium",
-    "explanation": "Callbacks are often used to handle asynchronous tasks, like API calls or timers."
-  },
-  {
-    "question": "What does setTimeout(() => console.log('Hi'), 1000) do?",
-    "options": [
-      "Logs 'Hi' after 1 second",
-      "Logs 'Hi' immediately",
-      "Throws an error",
-      "Creates a loop"
-    ],
-    "answer": "Logs 'Hi' after 1 second",
-    "difficulty": "Medium",
-    "explanation": "setTimeout executes the callback function after a 1000ms delay."
-  },
-  {
-    "question": "What is the output of: function greet(name, cb) { cb('Hello ' + name); } greet('Alice', msg => console.log(msg));?",
-    "options": [
-      "Hello Alice",
-      "Alice",
-      "undefined",
-      "Error"
-    ],
-    "answer": "Hello Alice",
-    "difficulty": "Medium",
-    "explanation": "The callback receives 'Hello Alice' and logs it."
-  },
-  {
-    "question": "How do you pass multiple arguments to a callback?",
-    "options": [
-      "Call cb(arg1, arg2)",
-      "Use cb([arg1, arg2])",
-      "Use cb({arg1, arg2})",
-      "Use cb(arg1 + arg2)"
-    ],
-    "answer": "Call cb(arg1, arg2)",
-    "difficulty": "Medium",
-    "explanation": "Callbacks can accept multiple arguments directly when called."
-  },
-  {
-    "question": "What is a drawback of deeply nested callbacks?",
-    "options": [
-      "Callback hell",
-      "Infinite loops",
-      "Variable shadowing",
-      "Memory leaks"
-    ],
-    "answer": "Callback hell",
-    "difficulty": "Medium",
-    "explanation": "Deeply nested callbacks create complex, hard-to-read code known as callback hell."
-  },
-  {
-    "question": "What is the syntax for an arrow function with one parameter?",
-    "options": [
-      "x => x * 2",
-      "function(x) => x * 2",
-      "(x) => { return x * 2 }",
-      "=> x { x * 2 }"
-    ],
-    "answer": "x => x * 2",
-    "difficulty": "Medium",
-    "explanation": "Arrow functions with one parameter omit parentheses and can use implicit return."
-  },
-  {
-    "question": "What does const double = x => x * 2; console.log(double(5)); output?",
+    "question": "What is the output of: function run(cb) { cb(5); } run(x => console.log(x * 2));?",
     "options": [
       "10",
       "5",
@@ -295,91 +283,247 @@ quiz =[
     ],
     "answer": "10",
     "difficulty": "Medium",
-    "explanation": "The arrow function doubles the input, so double(5) returns 10."
+    "explanation": "The callback multiplies x (5) by 2, logging 10."
   },
   {
-    "question": "How does 'this' behave in an arrow function?",
+    "question": "What does setTimeout(callback, 1000) do?",
     "options": [
-      "Lexically bound to outer scope",
-      "Bound to the caller",
-      "Always undefined",
-      "Bound to the function"
+      "Executes callback after 1 second",
+      "Repeats callback every 1 second",
+      "Delays the entire program",
+      "Calls callback immediately"
     ],
-    "answer": "Lexically bound to outer scope",
+    "answer": "Executes callback after 1 second",
     "difficulty": "Medium",
-    "explanation": "Arrow functions inherit 'this' from their enclosing scope, unlike regular functions."
+    "explanation": "'setTimeout' schedules the callback to run after a 1000ms delay."
   },
   {
-    "question": "What is the output of: const obj = { x: 1, fn: () => this.x }; console.log(obj.fn());?",
+    "question": "What is logged by: function process(arr, cb) { for (let x of arr) cb(x); } process([1, 2], x => console.log(x + 1));?",
     "options": [
-      "undefined",
-      "1",
-      "Error",
-      "null"
+      "2 3",
+      "1 2",
+      "3 4",
+      "1 1"
     ],
-    "answer": "undefined",
-    " difficulty": "Medium",
-    "explanation": "Arrow functions don’t bind their own 'this', so 'this.x' refers to the outer scope, likely undefined."
-  },
-  {
-    "question": "What does () => {} represent?",
-    "options": [
-      "An arrow function with no parameters",
-      "A regular function",
-      "An object literal",
-      "A closure"
-    ],
-    "answer": "An arrow function with no parameters",
+    "answer": "2 3",
     "difficulty": "Medium",
-    "explanation": "The syntax () => {} defines an arrow function with no parameters."
+    "explanation": "The callback adds 1 to each array element, logging 2 and 3."
   },
   {
-    "question": "How do you write an arrow function with multiple statements?",
+    "question": "What is a common issue with callbacks?",
     "options": [
-      "(x) => { let y = x * 2; return y; }",
-      "x => x * 2; return x;",
-      "(x) => x * 2",
-      "(x) => { x * 2 }"
+      "Callback hell (nested callbacks)",
+      "Infinite loops",
+      "Variable shadowing",
+      "Syntax errors"
     ],
-    "answer": "(x) => { let y = x * 2; return y; }",
+    "answer": "Callback hell (nested callbacks)",
     "difficulty": "Medium",
-    "explanation": "Multiple statements require curly braces and an explicit return."
+    "explanation": "Deeply nested callbacks can make code hard to read, known as callback hell."
   },
   {
-    "question": "What is the benefit of arrow functions in callbacks?",
+    "question": "What does this callback do: function asyncOp(cb) { setTimeout(() => cb('done'), 100); } asyncOp(console.log);?",
     "options": [
-      "Concise syntax and lexical 'this'",
-      "Automatic error handling",
-      "Global variable access",
-      "Loop creation"
-    ],
-    "answer": "Concise syntax and lexical 'this'",
-    "difficulty": "Medium",
-    "explanation": "Arrow functions offer shorter syntax and inherit 'this' from the outer scope."
-  },
-  {
-    "question": "What does [1, 2, 3].forEach(x => console.log(x)) do?",
-    "options": [
-      "Logs 1, 2, 3",
-      "Logs [1, 2, 3]",
-      "Returns a new array",
+      "Logs 'done' after 100ms",
+      "Logs 'done' immediately",
+      "Logs undefined",
       "Throws an error"
     ],
-    "answer": "Logs 1, 2, 3",
+    "answer": "Logs 'done' after 100ms",
     "difficulty": "Medium",
-    "explanation": "'forEach' calls the callback for each element, logging 1, 2, 3."
+    "explanation": "The callback (console.log) is called with 'done' after a 100ms delay."
   },
   {
-    "question": "What is the output of: let arr = [1, 2, 3]; let sum = 0; arr.forEach(x => sum += x); console.log(sum);?",
+    "question": "What is the output of: function callTwice(cb) { cb(); cb(); } callTwice(() => console.log('Hi'));?",
+    "options": [
+      "Logs 'Hi' twice",
+      "Logs 'Hi' once",
+      "Logs undefined",
+      "Throws an error"
+    ],
+    "answer": "Logs 'Hi' twice",
+    "difficulty": "Medium",
+    "explanation": "The callback is executed twice, logging 'Hi' each time."
+  },
+  {
+    "question": "How do you pass data to a callback function?",
+    "options": [
+      "Pass arguments when calling the callback",
+      "Use global variables",
+      "Define the callback inside a loop",
+      "Use a closure"
+    ],
+    "answer": "Pass arguments when calling the callback",
+    "difficulty": "Medium",
+    "explanation": "Callbacks receive data as arguments when invoked by the calling function."
+  },
+  {
+    "question": "What is logged by: let fn = cb => cb(3); fn(x => console.log(x * x));?",
+    "options": [
+      "9",
+      "3",
+      "6",
+      "undefined"
+    ],
+    "answer": "9",
+    "difficulty": "Medium",
+    "explanation": "The callback squares x (3), logging 9."
+  },
+  {
+    "question": "Why are callbacks used in asynchronous operations?",
+    "options": [
+      "To handle results after the operation completes",
+      "To loop through arrays",
+      "To define objects",
+      "To create closures"
+    ],
+    "answer": "To handle results after the operation completes",
+    "difficulty": "Medium",
+    "explanation": "Callbacks allow handling of results or errors after an async operation finishes."
+  },
+  {
+    "question": "What is the syntax for an arrow function with one parameter?",
+    "options": [
+      "x => x * 2",
+      "(x) => { return x * 2; }",
+      "function(x) => x * 2",
+      "=> x * 2"
+    ],
+    "answer": "x => x * 2",
+    "difficulty": "Medium",
+    "explanation": "Arrow functions with one parameter can omit parentheses for concise syntax."
+  },
+  {
+    "question": "What does this arrow function return: let fn = x => x + 1; console.log(fn(5));?",
     "options": [
       "6",
-      "0",
-1, 2, 3",
+      "5",
+      "undefined",
+      "Error"
+    ],
+    "answer": "6",
+    "difficulty": "Medium",
+    "explanation": "The arrow function adds 1 to x (5), returning 6."
+  },
+  {
+    "question": "What is the output of: let fn = (x, y) => x * y; console.log(fn(2, 3));?",
+    "options": [
+      "6",
+      "5",
+      "23",
       "undefined"
     ],
     "answer": "6",
     "difficulty": "Medium",
-    "explanation": "'forEach' iterates over the array, adding each element to sum, resulting in 6."
+    "explanation": "The arrow function multiplies x (2) and y (3), returning 6."
+  },
+  {
+    "question": "How does an arrow function differ from a regular function in terms of 'this'?",
+    "options": [
+      "Arrow functions inherit 'this' from their enclosing scope",
+      "Arrow functions have their own 'this'",
+      "Arrow functions cannot use 'this'",
+      "Arrow functions redefine 'this'"
+    ],
+    "answer": "Arrow functions inherit 'this' from their enclosing scope",
+    "difficulty": "Medium",
+    "explanation": "Arrow functions do not have their own 'this'; they use the 'this' of their lexical scope."
+  },
+  {
+    "question": "What does this arrow function do: let obj = { value: 10, fn: () => this.value }; console.log(obj.fn());?",
+    "options": [
+      "Logs undefined",
+      "Logs 10",
+      "Logs obj",
+      "Throws an error"
+    ],
+    "answer": "Logs undefined",
+    "difficulty": "Medium",
+    "explanation": "Arrow functions don’t bind 'this' to the object, so 'this.value' is undefined."
+  },
+  {
+    "question": "What is the output of: let double = x => x * 2; console.log(double(4));?",
+    "options": [
+      "8",
+      "4",
+      "16",
+      "undefined"
+    ],
+    "answer": "8",
+    "difficulty": "Medium",
+    "explanation": "The arrow function doubles x (4), returning 8."
+  },
+  {
+    "question": "Can arrow functions be used as constructors?",
+    "options": [
+      "No, they cannot be used with 'new'",
+      "Yes, like regular functions",
+      "Only if they return an object",
+      "Only with prototypes"
+    ],
+    "answer": "No, they cannot be used with 'new'",
+    "difficulty": "Medium",
+    "explanation": "Arrow functions lack a prototype property and cannot be used as constructors."
+  },
+  {
+    "question": "What does () => ({ x: 1 }) return?",
+    "options": [
+      "An object { x: 1 }",
+      "The value 1",
+      "undefined",
+      "A function"
+    ],
+    "answer": "An object { x: 1 }",
+    "difficulty": "Medium",
+    "explanation": "The arrow function with parentheses around the object returns { x: 1 }."
+  },
+  {
+    "question": "What is the output of: let fn = () => 42; console.log(fn());?",
+    "options": [
+      "42",
+      "undefined",
+      "null",
+      "Error"
+    ],
+    "answer": "42",
+    "difficulty": "Medium",
+    "explanation": "The arrow function implicitly returns 42."
+  },
+  {
+    "question": "Why are arrow functions preferred in callbacks?",
+    "options": [
+      "They have concise syntax and lexical 'this'",
+      "They always return objects",
+      "They are faster than regular functions",
+      "They create closures automatically"
+    ],
+    "answer": "They have concise syntax and lexical 'this'",
+    "difficulty": "Medium",
+    "explanation": "Arrow functions are concise and inherit 'this', making them ideal for callbacks."
+  },
+  {
+    "question": "What does [1, 2, 3].forEach(x => console.log(x * 2)) do?",
+    "options": [
+      "Logs 2, 4, 6",
+      "Logs 1, 2, 3",
+      "Returns a new array",
+      "Logs nothing"
+    ],
+    "answer": "Logs 2, 4, 6",
+    "difficulty": "Medium",
+    "explanation": "'forEach' calls the callback for each element, doubling and logging each value."
+  },
+  {
+    "question": "What is the output of: let sum = 0; [1, 2, 3].forEach(x => sum += x); console.log(sum);?",
+    "options": [
+      "6",
+      "3",
+      "0",
+      "undefined"
+    ],
+    "answer": "6",
+    "difficulty": "Medium",
+    "explanation": "'forEach' adds each element to sum, resulting in 1 + 2 + 3 = 6."
   },
   {
     "question": "What does forEach return?",
@@ -387,59 +531,95 @@ quiz =[
       "undefined",
       "A new array",
       "The last element",
-      "The sum of elements"
+      "The original array"
     ],
     "answer": "undefined",
     "difficulty": "Medium",
-    "explanation": "'forEach' performs an action for each element but returns undefined."
+    "explanation": "'forEach' executes a callback for each element and returns undefined."
   },
   {
-    "question": "How do you access the index in a forEach loop?",
+    "question": "What is logged by: [1, 2].forEach((x, i) => console.log(i, x));?",
     "options": [
-      "arr.forEach((item, index) => ...)",
-      "arr.forEach(item, i => ...)",
-      "arr.forEach(item => index)",
-      "arr.forEach((item) => item.index)"
-    ]
-    "answer": "arr.forEach((item, index) => ...)",
-    "difficulty": "Medium",
-    "explanation": "The forEach callback accepts an optional second parameter for the index."
-  },
-  {
-    "question": "What does [1, 2, 3].forEach((x, i) => console.log(i)) output?",
-    "options": [
-      "0 1 2",
-      "1 2 3",
-      "undefined",
-      "Error"
+      "0 1, 1 2",
+      "1 0, 2 1",
+      "1 2, 2 1",
+      "0 1, 0 2"
     ],
-    "answer": "0 1 2",
+    "answer": "0 1, 1 2",
     "difficulty": "Medium",
-    "explanation": "The forEach callback logs the index of each element: 0, 1, 2."
+    "explanation": "'forEach' provides the index and element, logging index 0 with 1, then index 1 with 2."
   },
   {
-    "question": "What does arr.forEach break do?",
+    "question": "Can you stop a forEach loop early?",
     "options": [
-      "Cannot break; use a for loop",
-      "Exits the forEach loop",
-      "Skips to the next iteration",
+      "No, forEach cannot be stopped",
+      "Yes, with break",
+      "Yes, with return",
+      "Yes, with continue"
+    ],
+    "answer": "No, forEach cannot be stopped",
+    "difficulty": "Medium",
+    "explanation": "'forEach' runs for all elements; 'break' or 'return' cannot stop it."
+  },
+  {
+    "question": "What does ['a', 'b'].forEach((x, i, arr) => arr[i] = x.toUpperCase()) do?",
+    "options": [
+      "Modifies array to ['A', 'B']",
+      "Returns ['A', 'B']",
+      "Logs 'A', 'B'",
       "Throws an error"
     ],
-    "answer": "Cannot break; use a for loop",
+    "answer": "Modifies array to ['A', 'B']",
     "difficulty": "Medium",
-    "explanation": "'forEach' cannot be exited with break; use a traditional for loop instead."
+    "explanation": "'forEach' modifies the original array by setting each element to uppercase."
   },
   {
-    "question": "What does [1, 2, 3].forEach(x闻言, 'x => x * 2', x => console.log(x)) output?",
+    "question": "What is logged by: [1, 2, 3].forEach(x => { if (x === 2) return; console.log(x); });?",
     "options": [
-      "Logs 2 4 6",
-      "Logs 1 2 3",
-      "Logs 1 4 9",
-      "Logs nothing"
+      "1 3",
+      "1 2 3",
+      "2",
+      "Nothing"
     ],
-    "answer": "Logs 2 4 6",
+    "answer": "1 3",
     "difficulty": "Medium",
-    "explanation": "The forEach callback multiplies each element by 2, logging 2, 4, 6."
+    "explanation": "'return' in forEach skips the current iteration, logging only 1 and 3."
+  },
+  {
+    "question": "What does [10, 20].forEach((x, i) => console.log(i + ': ' + x)) log?",
+    "options": [
+      "0: 10, 1: 20",
+      "10: 0, 20: 1",
+      "1: 10, 2: 20",
+      "10, 20"
+    ],
+    "answer": "0: 10, 1: 20",
+    "difficulty": "Medium",
+    "explanation": "'forEach' logs the index and element as a string for each iteration."
+  },
+  {
+    "question": "What is the purpose of forEach compared to a for loop?",
+    "options": [
+      "More concise for iterating arrays",
+      "Faster execution",
+      "Returns a new array",
+      "Handles errors"
+    ],
+    "answer": "More concise for iterating arrays",
+    "difficulty": "Medium",
+    "explanation": "'forEach' provides a cleaner way to iterate over arrays compared to a for loop."
+  },
+  {
+    "question": "What does [1, 2].forEach(() => console.log('test')) log?",
+    "options": [
+      "test test",
+      "test",
+      "undefined",
+      "Nothing"
+    ],
+    "answer": "test test",
+    "difficulty": "Medium",
+    "explanation": "'forEach' runs the callback for each element (2 times), logging 'test' twice."
   },
   {
     "question": "What does [1, 2, 3].map(x => x * 2) return?",
@@ -447,406 +627,479 @@ quiz =[
       "[2, 4, 6]",
       "[1, 2, 3]",
       "undefined",
-      "[1, 4, 9]"
+      "Logs 2, 4, 6"
     ],
     "answer": "[2, 4, 6]",
     "difficulty": "Medium",
-    "explanation": "'map' creates a new array with each element transformed by the callback, doubling each value."
+    "explanation": "'map' creates a new array with each element doubled."
   },
   {
-    "question": "What is the output of: console.log([1, 2, 3].map(x => x + 1));?",
+    "question": "What is the output of: console.log([1, 2].map((x, i) => i));?",
     "options": [
-      "[2, 3, 4]",
+      "[0, 1]",
+      "[1, 2]",
+      "[0, 0]",
+      "[1, 1]"
+    ],
+    "answer": "[0, 1]",
+    "difficulty": "Medium",
+    "explanation": "'map' returns an array of indices (0, 1) for each element."
+  },
+  {
+    "question": "What does ['a', 'b'].map(x => x.toUpperCase()) return?",
+    "options": [
+      "['A', 'B']",
+      "['a', 'b']",
+      "undefined",
+      "Logs A, B"
+    ],
+    "answer": "['A', 'B']",
+    "difficulty": "Medium",
+    "explanation": "'map' creates a new array with each string converted to uppercase."
+  },
+  {
+    "question": "What is the output of: [1, 2, 3].map(x => x > 1 ? x : 0);?",
+    "options": [
+      "[0, 2, 3]",
       "[1, 2, 3]",
-      "[1, 4, 9]",
+      "[0, 0, 0]",
+      "[1, 1, 1]"
+    ],
+    "answer": "[0, 2, 3]",
+    "difficulty": "Medium",
+    "explanation": "'map' returns 0 for elements <= 1 and the element itself if > 1."
+  },
+  {
+    "question": "What does map do compared to forEach?",
+    "options": [
+      "Returns a new array, forEach returns undefined",
+      "Logs values, forEach modifies arrays",
+      "Iterates faster than forEach",
+      "Handles errors"
+    ],
+    "answer": "Returns a new array, forEach returns undefined",
+    "difficulty": "Medium",
+    "explanation": "'map' creates a new array with transformed values, while 'forEach' does not."
+  },
+  {
+    "question": "What is the output of: [1, 2].map((x, i, arr) => arr[i] * 2);?",
+    "options": [
+      "[2, 4]",
+      "[1, 2]",
+      "[0, 1]",
       "undefined"
     ],
-    "answer": "[2, 3, 4]",
+    "answer": "[2, 4]",
     "difficulty": "Medium",
-    "explanation": "'map' applies the callback to each element, adding 1 to produce a new array."
+    "explanation": "'map' doubles each element using the array and index, returning [2, 4]."
   },
   {
-    "question": "What does [1, 2, 3].map((x, i) => x + i) return?",
+    "question": "What does [null, 1].map(x => x || 0) return?",
     "options": [
-      "[1, 3, 5]",
-      "[1, 2, 3]",
-      "[2, 4, 6]",
-      "[0, 2, 4]"
-    ],
-    "answer": "[1, 3, 5]",
-    "difficulty": "Medium",
-    "explanation": "'map' adds the index i to each element x, resulting in [1+0, 2+1, 3+2]."
-  },
-  {
-    "question": "What is the difference between map and forEach?",
-    "options": [
-      "map returns a new array; forEach returns undefined",
-      "map modifies the original array; forEach doesn’t",
-      "map is synchronous; forEach is asynchronous",
-      "map uses closures; forEach doesn’t"
-    ],
-    "answer": "map returns a new array; forEach returns undefined",
-    "difficulty": "Medium",
-    "explanation": "'map' creates a new array with transformed elements, while 'forEach' performs actions without returning."
-  },
-  {
-    "question": "What does [1, 2, 3].map(x => String(x)) return?",
-    "options": [
-      "['1', '2', '3']",
-      "[1, 2, 3]",
-      "['1, 2, 3']",
+      "[0, 1]",
+      "[null, 1]",
+      "[0, 0]",
       "undefined"
     ],
-    "answer": "['1', '2', '3']",
+    "answer": "[0, 1]",
     "difficulty": "Medium",
-    "explanation": "'map' converts each number to a string, producing a new array of strings."
+    "explanation": "'map' replaces falsy values (null) with 0, keeping 1 unchanged."
   },
   {
-    "question": "What does [1, 2, 3].map((x, i, arr) => arr[i] * 2) return?",
+    "question": "What is logged by: console.log([1, 2].map(x => ({ x })));?",
     "options": [
-      "[2, 4, 6]",
-      "[1, 2, 3]",
-      "[1, 4, 9]",
+      "[{ x: 1 }, { x: 2 }]",
+      "[1, 2]",
+      "[{ x: 1 }, { x: 1 }]",
       "undefined"
     ],
-    "answer": "[2, 4, 6]",
+    "answer": "[{ x: 1 }, { x: 2 }]",
     "difficulty": "Medium",
-    "explanation": "'map' uses the array’s elements via arr[i], doubling each to produce a new array."
- nursing
+    "explanation": "'map' creates objects with property x for each element."
+  },
+  {
+    "question": "What does [1, 2, 3].map(x => x % 2 === 0 ? 'even' : 'odd') return?",
+    "options": [
+      "['odd', 'even', 'odd']",
+      "['even', 'odd', 'even']",
+      "[1, 2, 3]",
+      "undefined"
+    ],
+    "answer": "['odd', 'even', 'odd']",
+    "difficulty": "Medium",
+    "explanation": "'map' labels each number as 'even' or 'odd' based on x % 2."
+  },
+  {
+    "question": "What is the purpose of the map method?",
+    "options": [
+      "Transform elements into a new array",
+      "Iterate without returning",
+      "Modify the original array",
+      "Filter elements"
+    ],
+    "answer": "Transform elements into a new array",
+    "difficulty": "Medium",
+    "explanation": "'map' creates a new array with the results of the callback applied to each element."
+  },
+  {
     "question": "What does [1, 2, 3].find(x => x > 1) return?",
     "options": [
       "2",
-      "1",
       "[2, 3]",
+      "1",
       "undefined"
     ],
     "answer": "2",
     "difficulty": "Medium",
-    "explanation": "'find' returns the first element that satisfies the condition, which is 2."
+    "explanation": "'find' returns the first element where the callback returns true (x > 1)."
   },
   {
-    "question": "What does [1, 2, 3].find((x, i) => i === 1) return?",
+    "question": "What is the output of: console.log([1, 2, 3].find((x, i) => i === 1));?",
     "options": [
       "2",
       "1",
       "undefined",
-      "Error"
+      "0"
     ],
     "answer": "2",
-    " difficulty": "Medium",
+    "difficulty": "Medium",
     "explanation": "'find' returns the element at index 1, which is 2."
   },
   {
-    "question": "What happens if [1, 2, 3].find(x => x > 3) finds no match?",
+    "question": "What does ['apple', 'banana'].find(x => x.includes('an')) return?",
     "options": [
-      "Returns undefined",
-      "Returns null",
-      "Throws an error",
-      "Returns an empty array"
-    ],
-    "answer": "Returns undefined",
-    "difficulty": "Medium",
-    "explanation": "'find' returns undefined if no element satisfies the condition."
-  },
-  {
-    "question": "What does [1, 2, 3].find(x => x % 2 === 0) return?",
-    "options": [
-      "2",
-      "1",
+      "banana",
+      "apple",
       "undefined",
-      "Error"
+      "an"
     ],
-    "answer": "2",
+    "answer": "banana",
     "difficulty": "Medium",
-    "explanation": "'find' returns the first even number, which is 2."
+    "explanation": "'find' returns the first string containing 'an', which is 'banana'."
   },
   {
-    "question": "What does [1, 2, 3].find((x, i, arr) => arr[i] === 3) return?",
+    "question": "What does [1, 2, 3].find(x => x > 5) return?",
     "options": [
-      "3",
-      "2",
-      "undefined",
-      "Error"
-    ],
-    "answer": "3",
-    "difficulty": "Medium",
-    "explanation": "'find' returns the element where arr[i] === 3, which is 3."
-  },
-  {
-    "question": "What does function Person(name) { this.name = name; } let p = new Person('Bob'); console.log(p.name); output?",
-    "options": [
-      "Bob",
-      "Person",
-      "undefined",
-      "Error"
-    ],
-    "answer": "Bob",
-    "difficulty": "Medium",
-    "explanation": "The constructor sets the 'name' property, which is accessed as p.name."
-  },
-  {
-    "question": "What is the purpose of a constructor function?",
-    "options": [
-      "To create and initialize objects",
-      "To loop through arrays",
-      "To handle errors",
-      "To define callbacks"
-    ],
-    "answer": "To create and initialize objects",
-    "difficulty": "Medium",
-    "explanation": "Constructors are functions used with 'new' to create and initialize objects."
-  },
-  {
-    "question": "What does new Constructor() return?",
-    "options": [
-      "A new object",
       "undefined",
       "null",
-      "The constructor function"
+      "1",
+      "[1, 2, 3]"
     ],
-    "answer": "A new object",
+    "answer": "undefined",
     "difficulty": "Medium",
-    "explanation": "The 'new' keyword creates a new object instance of the constructor."
+    "explanation": "'find' returns undefined if no element satisfies the callback."
   },
   {
-    "question": "What is the output of: function Car(model) { this.model = model; } let c = new Car('Toyota'); console.log(c.model);?",
+    "question": "What does [ { id: 1 }, { id: 2 } ].find(obj => obj.id === 2) return?",
     "options": [
-      "Toyota",
-      "Car",
+      "{ id: 2 }",
+      "{ id: 1 }",
+      "2",
+      "undefined"
+    ],
+    "answer": "{ id: 2 }",
+    "difficulty": "Medium",
+    "explanation": "'find' returns the first object where id === 2."
+  },
+  {
+    "question": "What is the output of: console.log([0, 1, 0].find(x => x));?",
+    "options": [
+      "1",
+      "0",
       "undefined",
-      "Error"
+      "[0, 1, 0]"
     ],
-    "answer": "Toyota",
+    "answer": "1",
     "difficulty": "Medium",
-    "explanation": "The constructor sets the 'model' property, which is accessed as c.model."
+    "explanation": "'find' returns the first truthy value, which is 1."
   },
   {
-    "question": "How do you add a method to a constructor’s prototype?",
+    "question": "What does find return if no element is found?",
     "options": [
-      "Constructor.prototype.method = function() {}",
-      "Constructor.method = function() {}",
-      "Constructor.addMethod(function() {})",
-      "Constructor.setMethod(function() {})"
+      "undefined",
+      "null",
+      "[]",
+      "0"
     ],
-    "answer": "Constructor.prototype.method = function() {}",
+    "answer": "undefined",
     "difficulty": "Medium",
-    "explanation": "Methods added to the prototype are shared by all instances of the constructor."
+    "explanation": "'find' returns undefined when no element matches the callback."
   },
   {
-    "question": "What does function X() { this.y = 1; } X.prototype.z = 2; let x = new X(); console.log(x.z); output?",
+    "question": "What is logged by: console.log([1, 2, 3].find((x, i, arr) => arr[i] === 2));?",
     "options": [
       "2",
       "1",
-      "undefined",
-      "Error"
+      "3",
+      "undefined"
     ],
     "answer": "2",
     "difficulty": "Medium",
-    "explanation": "The prototype property z is inherited by the instance x, so x.z returns 2."
+    "explanation": "'find' returns the element at index where arr[i] === 2."
   },
   {
-    "question": "What does const { name } = { name: 'Alice', age: 25 }; console.log(name); output?",
+    "question": "What does ['cat', 'dog'].find(x => x.length > 3) return?",
     "options": [
-      "Alice",
-      "25",
+      "undefined",
+      "cat",
+      "dog",
+      "null"
+    ],
+    "answer": "undefined",
+    "difficulty": "Medium",
+    "explanation": "'find' returns undefined since no string has length > 3."
+  },
+  {
+    "question": "What is the purpose of the find method?",
+    "options": [
+      "Returns the first element matching a condition",
+      "Returns a new array",
+      "Modifies the original array",
+      "Logs all elements"
+    ],
+    "answer": "Returns the first element matching a condition",
+    "difficulty": "Medium",
+    "explanation": "'find' returns the first element where the callback returns true."
+  },
+  {
+    "question": "What is a constructor function in JavaScript?",
+    "options": [
+      "A function used with 'new' to create objects",
+      "A function that loops",
+      "A function that returns a string",
+      "A function with no parameters"
+    ],
+    "answer": "A function used with 'new' to create objects",
+    "difficulty": "Medium",
+    "explanation": "Constructors create and initialize objects when called with 'new'."
+  },
+  {
+    "question": "What does this constructor do: function Car(model) { this.model = model; } let car = new Car('Toyota'); console.log(car.model);?",
+    "options": [
+      "Logs 'Toyota'",
+      "Logs undefined",
+      "Logs Car",
+      "Throws an error"
+    ],
+    "answer": "Logs 'Toyota'",
+    "difficulty": "Medium",
+    "explanation": "The constructor sets the 'model' property, accessed as car.model."
+  },
+  {
+    "question": "What is the output of: function User(name) { this.name = name; } let u = new User('Alice'); console.log(u instanceof User);?",
+    "options": [
+      "true",
+      "false",
       "undefined",
       "Error"
     ],
-    "answer": "Alice",
+    "answer": "true",
     "difficulty": "Medium",
-    "explanation": "Destructuring extracts the 'name' property into a variable named name."
+    "explanation": "'instanceof' checks if u was created by the User constructor, returning true."
   },
   {
-    "question": "What does const [a, b] = [1, 2, 3]; console.log(a, b); output?",
+    "question": "How do you add a method to a constructor?",
     "options": [
-      "1 2",
-      "1 2 3",
-      "undefined undefined",
+      "Inside the constructor or via prototype",
+      "Using a loop",
+      "Using an array",
+      "Using a callback"
+    ],
+    "answer": "Inside the constructor or via prototype",
+    "difficulty": "Medium",
+    "explanation": "Methods can be defined in the constructor or added to the prototype for shared functionality."
+  },
+  {
+    "question": "What does this do: function Person() { this.age = 30; } Person.prototype.greet = function() { return 'Hi'; }; let p = new Person(); console.log(p.greet());?",
+    "options": [
+      "Logs 'Hi'",
+      "Logs undefined",
+      "Logs 30",
+      "Throws an error"
+    ],
+    "answer": "Logs 'Hi'",
+    "difficulty": "Medium",
+    "explanation": "The greet method on the prototype is inherited by p, logging 'Hi'."
+  },
+  {
+    "question": "What is the output of: function Item(id) { this.id = id; } let item = new Item(1); console.log(item.id);?",
+    "options": [
+      "1",
+      "undefined",
+      "Item",
       "Error"
     ],
-    "answer": "1 2",
+    "answer": "1",
     "difficulty": "Medium",
-    "explanation": "Array destructuring assigns the first two elements to a and b."
+    "explanation": "The constructor sets the 'id' property, accessed as item.id."
   },
   {
-    "question": "What does function fn({x, y}) { return x + y; } console.log(fn({x: 1, y: 2})); output?",
+    "question": "What does 'new' do when calling a constructor?",
+    "options": [
+      "Creates a new object and sets its prototype",
+      "Calls the function without an object",
+      "Returns a string",
+      "Loops through properties"
+    ],
+    "answer": "Creates a new object and sets its prototype",
+    "difficulty": "Medium",
+    "explanation": "'new' creates an object, sets its prototype, and binds 'this' to it."
+  },
+  {
+    "question": "What is logged by: function Test() { this.x = 5; } Test.prototype.x = 10; let t = new Test(); console.log(t.x);?",
+    "options": [
+      "5",
+      "10",
+      "undefined",
+      "Error"
+    ],
+    "answer": "5",
+    "difficulty": "Medium",
+    "explanation": "The constructor’s property (x = 5) overrides the prototype’s property (x = 10)."
+  },
+  {
+    "question": "What does this constructor do: function Book(title) { this.title = title; this.getTitle = () => this.title; } let b = new Book('JS'); console.log(b.getTitle());?",
+    "options": [
+      "Logs 'JS'",
+      "Logs undefined",
+      "Logs Book",
+      "Throws an error"
+    ],
+    "answer": "Logs 'JS'",
+    "difficulty": "Medium",
+    "explanation": "The arrow function in the constructor returns the title property."
+  },
+  {
+    "question": "Why add methods to a constructor’s prototype?",
+    "options": [
+      "To share methods across instances",
+      "To make methods private",
+      "To loop through instances",
+      "To create closures"
+    ],
+    "answer": "To share methods across instances",
+    "difficulty": "Medium",
+    "explanation": "Prototype methods are shared, saving memory compared to instance methods."
+  },
+  {
+    "question": "What does let { name, age } = { name: 'Alice', age: 25 }; console.log(name); do?",
+    "options": [
+      "Logs 'Alice'",
+      "Logs undefined",
+      "Logs { name: 'Alice' }",
+      "Throws an error"
+    ],
+    "answer": "Logs 'Alice'",
+    "difficulty": "Medium",
+    "explanation": "Object destructuring assigns the 'name' property to a variable named 'name'."
+  },
+  {
+    "question": "What is the output of: let [a, b] = [1, 2]; console.log(a + b);?",
     "options": [
       "3",
-      "1 2",
+      "12",
       "undefined",
       "Error"
     ],
     "answer": "3",
     "difficulty": "Medium",
-    "explanation": "Object destructuring in the parameter list extracts x and y, returning their sum."
+    "explanation": "Array destructuring assigns 1 to a and 2 to b, so a + b = 3."
   },
   {
-    "question": "What does const [x, ...rest] = [1, 2, 3]; console.log(rest); output?",
+    "question": "What does let { x = 10 } = { }; console.log(x); do?",
+    "options": [
+      "Logs 10",
+      "Logs undefined",
+      "Logs null",
+      "Throws an error"
+    ],
+    "answer": "Logs 10",
+    "difficulty": "Medium",
+    "explanation": "Destructuring with a default value assigns 10 to x when the property is undefined."
+  },
+  {
+    "question": "What is the output of: let [x, ...rest] = [1, 2, 3]; console.log(rest);?",
     "options": [
       "[2, 3]",
       "[1, 2, 3]",
-      "[1]",
+      "2",
       "undefined"
     ],
     "answer": "[2, 3]",
     "difficulty": "Medium",
-    "explanation": "The rest parameter collects remaining elements into an array after x."
+    "explanation": "The rest operator in destructuring collects remaining elements into an array."
   },
   {
-    "question": "What does const { x = 10 } = {}; console.log(x); output?",
+    "question": "What does function fn({ name }) { console.log(name); } do when called with fn({ name: 'Bob' });?",
     "options": [
-      "10",
-      "undefined",
-      "null",
-      "Error"
+      "Logs 'Bob'",
+      "Logs undefined",
+      "Logs { name: 'Bob' }",
+      "Throws an error"
     ],
-    "answer": "10",
+    "answer": "Logs 'Bob'",
     "difficulty": "Medium",
-    "explanation": "Destructuring with a default value assigns 10 to x if the property is undefined."
+    "explanation": "Destructuring in the parameter extracts the 'name' property, logging 'Bob'."
   },
   {
-    "question": "What does const [a, b = 5] = [1]; console.log(b); output?",
+    "question": "What does let x = true ? 'yes' : 'no'; console.log(x); do?",
     "options": [
-      "5",
-      "1",
-      "undefined",
-      "Error"
+      "Logs 'yes'",
+      "Logs 'no'",
+      "Logs true",
+      "Throws an error"
     ],
-    "answer": "5",
+    "answer": "Logs 'yes'",
     "difficulty": "Medium",
-    "explanation": "Array destructuring assigns the default value 5 to b if no value is provided."
+    "explanation": "The ternary operator returns 'yes' if true, so x is 'yes'."
   },
   {
-    "question": "What does const x = 2; console.log(x > 1 ? 'Yes' : 'No'); output?",
+    "question": "What is the output of: console.log(5 > 3 ? 'greater' : 'less');?",
     "options": [
-      "Yes",
-      "No",
-      "undefined",
-      "Error"
-    ],
-    "answer": "Yes",
-    "difficulty": "Medium",
-    "explanation": "The ternary operator returns 'Yes' if x > 1 is true, else 'No'."
-  },
-  {
-    "question": "What does const result = x => x % 2 === 0 ? 'Even' : 'Odd'; console.log(result(3)); output?",
-    "options": [
-      "Odd",
-      "Even",
-      "undefined",
-      "Error"
-    ],
-    "answer": "Odd",
-    "difficulty": "Medium",
-    "explanation": "The ternary operator checks if 3 is even, returning 'Odd'."
-  },
-  {
-    "question": "What does const x = 0; console.log(x ? 'True' : 'False'); output?",
-    "options": [
-      "False",
-      "True",
-      "0",
+      "greater",
+      "less",
+      "true",
       "undefined"
     ],
-    "answer": "False",
+    "answer": "greater",
     "difficulty": "Medium",
-    "explanation": "The ternary operator evaluates x as falsy, returning 'False'."
+    "explanation": "The ternary operator evaluates 5 > 3 as true, returning 'greater'."
   },
   {
-    "question": "What does const max = (a, b) => a > b ? a : b; console.log(max(5, 3)); output?",
+    "question": "What does let result = x => x % 2 === 0 ? 'even' : 'odd'; console.log(result(4)); do?",
     "options": [
-      "5",
-      "3",
-      "undefined",
-      "Error"
+      "Logs 'even'",
+      "Logs 'odd'",
+      "Logs 4",
+      "Throws an error"
     ],
-    "answer": "5",
+    "answer": "Logs 'even'",
     "difficulty": "Medium",
-    "explanation": "The ternary operator returns the larger of a or b, which is 5."
-  },
-  {
-    "question": "What does const x = null; console.log(x ? 'Yes' : 'No'); output?",
-    "options": [
-      "No",
-      "Yes",
-      "null",
-      "undefined"
-    ],
-    "answer": "No",
-    "difficulty": "Medium",
-    "explanation": "The ternary operator evaluates null as falsy, returning 'No'."
+    "explanation": "The ternary operator checks if 4 is even, returning 'even'."
   },
   {
     "question": "What does [...[1, 2], 3] return?",
     "options": [
       "[1, 2, 3]",
       "[1, 2]",
-      "[3]",
-      "Error"
+      "[3, 1, 2]",
+      "undefined"
     ],
     "answer": "[1, 2, 3]",
     "difficulty": "Medium",
-    "explanation": "The spread operator spreads the array [1, 2] and adds 3 to create a new array."
+    "explanation": "The spread operator flattens [1, 2] and adds 3, creating [1, 2, 3]."
   },
   {
-    "question": "What does const arr = [1, 2]; console.log([...arr, ...arr]); output?",
-    "options": [
-      "[1, 2, 1, 2]",
-      "[1, 2]",
-      "[1, 1, 2, 2]",
-      "Error"
-    ],
-    "answer": "[1, 2, 1, 2]",
-    "difficulty": "Medium",
-    "explanation": "The spread operator spreads arr twice, creating a new array with its elements repeated."
-  },
-  {
-    "question": "What does const obj = { a: 1 }; console.log({ ...obj, b: 2 }); output?",
-    "options": [
-      "{ a: 1, b: 2 }",
-      "{ a: 1 }",
-      "{ b: 2 }",
-      "Error"
-    ],
-    "answer": "{ a: 1, b: 2 }",
-    "difficulty": "Medium",
-    "explanation": "The spread operator copies obj’s properties and adds b: 2 to the new object."
-  },
-  {
-    "question": "What does function fn(...args) { return args; } console.log(fn(1, 2, 3)); output?",
+    "question": "What is the output of: let a = [1, 2]; let b = [...a, 3]; console.log(b);?",
     "options": [
       "[1, 2, 3]",
-      "1, 2, 3",
-      "undefined",
-      "Error"
+      "[1, 2]",
+      "[3, 1, 2]",
+      "[1, 2, [3]]"
     ],
     "answer": "[1, 2, 3]",
     "difficulty": "Medium",
-    "explanation": "The spread operator in parameters collects arguments into an array."
-  },
-  {
-    "question": "What does const arr = [1, 2]; console.log([...arr].reverse()); output?",
-    "options": [
-      "[2, 1]",
-      "[1, 2]",
-      "undefined",
-      "Error"
-    ],
-    "answer": "[2, 1]",
-    "difficulty": "Medium",
-    "explanation": "The spread operator creates a new array, which is then reversed."
-  },
-  {
-    "question": "What does const obj = { a: 1 }; const newObj = { ...obj, a: 2 }; console.log(newObj.a); output?",
-    "options": [
-      "2",
-      "1",
-      "undefined",
-      "Error"
-    ],
-    "answer": "2",
-    "difficulty": "Medium",
-    "explanation": "The spread operator copies obj, and the new a: 2 overrides the original a: 1."
+    "explanation": "The spread operator copies a’s elements and adds 3, resulting in [1, 2, 3]."
   }
 ]
 # Cache shuffled quiz (removed for testing, re-add if needed)
@@ -1245,6 +1498,7 @@ else:
             st.markdown("</div>", unsafe_allow_html=True)
 
 st.markdown("</div>", unsafe_allow_html=True)
+
 
 
 
